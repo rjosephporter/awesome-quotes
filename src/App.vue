@@ -56,6 +56,12 @@
     },
     methods: {
       addQuote: function(quote) {
+        
+        if(this.quotes.length >= this.limit) {
+          alert('Maximum number of quotes reached!');
+          return;
+        }         
+        
         this.quotes.unshift(quote);
       },
       removeQuote: function(index) {

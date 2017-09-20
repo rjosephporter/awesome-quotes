@@ -18,11 +18,6 @@
 	    },
 	    methods: {
 	        addQuote: function() {
-	            if(this.quotes.length >= 10) {
-	              alert('Maximum number of quotes reached!');
-	              return;
-	            } 
-
 	            var quoteData = {
 	                quote: this.quote,
 	                timestamp: new Date()
