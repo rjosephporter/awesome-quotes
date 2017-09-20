@@ -4,13 +4,11 @@
 	        <label for="quote">Enter quote:</label>
 	        <textarea name="quote" id="quote" cols="30" rows="10" class="form-control" v-model="quote"></textarea>
 	    </div>
-	    <button class="btn btn-primary" type="submit">Submit</button>
+	    <button class="btn btn-primary" type="submit">Add Quote</button>
 	</form>
 </template>
 
 <script>
-    import { quoteEventBus } from '../../main.js';
-
 	export default {
 	    props: ['quotes'],
 	    data: function() {
@@ -29,7 +27,7 @@
 	                quote: this.quote,
 	                timestamp: new Date()
 	            };
-	            quoteEventBus.$emit('quoteAdded', quoteData);
+	            this.$emit('quoteAdded', quoteData);
 	            this.quote = '';
 	        }
 	    }

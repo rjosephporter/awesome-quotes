@@ -10,12 +10,12 @@
     </div>
     <div class="row mb-3">
       <div class="col">
-        <quote-create :quotes="quotes"></quote-create>
+        <quote-create :quotes="quotes" @quoteAdded="addQuote"></quote-create>
       </div>
     </div>
     <div class="row mb-3">
       <div class="col">
-        <quote-list :quotes="quotes"></quote-list>
+        <quote-list :quotes="quotes" @quoteRemoved="removeQuote"></quote-list>
       </div>
     </div>
     <div class="row mb-3">
@@ -54,14 +54,13 @@
       'quote-create': QuoteCreate,
       'quote-list': QuoteList
     },
-    created: function() {
-      var vm = this;
-      quoteEventBus.$on('quoteAdded', function(quoteData) {
-        vm.quotes.unshift(quoteData);
-      });
-      quoteEventBus.$on('quoteRemoved', function(quoteIndex) {
-        vm.quotes.splice(quoteIndex, 1);
-      });
+    methods: {
+      addQuote: function(quote) {
+        this.quotes.unshift(quote);
+      },
+      removeQuote: function(index) {
+        this.quotes.splice(index, 1);
+      }
     }
   }
 </script>
